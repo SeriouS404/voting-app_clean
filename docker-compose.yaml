@@ -1,7 +1,7 @@
 version: '3'
 services:
   azure-vote-back:
-    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8    #à modifier ?
     container_name: azure-vote-back
     environment:
       ALLOW_EMPTY_PASSWORD: "yes"
@@ -9,7 +9,7 @@ services:
         - "6379:6379"
 
   azure-vote-front:
-    image: joffreydupire/build-voting-app
+    image: newt2/build-voting-app       #à modifier ? 
     environment:
       REDIS: azure-vote-back
     ports:

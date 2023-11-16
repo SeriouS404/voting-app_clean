@@ -52,7 +52,7 @@ build {
 
   post-processors {
     post-processor "docker-tag" {
-      repository = "${var.docker_username}/${var.repository}"
+      repository = "${var.docker_username}/${var.repository}"     #variable non case sensitive ?
       tags = ["${var.semantic_release_version}-packer"]
     }
 

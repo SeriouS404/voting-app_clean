@@ -14,10 +14,10 @@ packer {
 source "docker" "ubuntu" {
   image  = "ubuntu:latest"
   commit = true
-     changes = [
-      "ENTRYPOINT [\"/usr/bin/python3\", \"/app/azure-vote/main.py\"]",
-      "EXPOSE 80"
-    ]
+  changes = [
+    "ENTRYPOINT [\"/usr/bin/python3\", \"/app/azure-vote/main.py\"]",
+    "EXPOSE 80"
+  ]
 }
 
 build {
@@ -27,20 +27,20 @@ build {
   ]
 
   provisioner "ansible" {
-    playbook_file = "../Ansible/playbook.yml"
-    extra_arguments = [ "--scp-extra-args", "'-O'" ]
+    playbook_file   = "../Ansible/playbook.yml"
+    extra_arguments = ["--scp-extra-args", "'-O'"]
   }
 
   post-processors {
     post-processor "docker-tag" {
-      repository = "joffreydupire/build-voting-app"
-      tags = ["latest"]
+      repository = "newt2/build-voting-app" #modif par mon id dockerhub
+      tags       = ["latest"]
     }
 
     post-processor "docker-push" {
-      login = true
-      login_username = "joffreydupire"
-      login_password = "mettre_token_pat"
+      login          = true
+      login_username = "newt2"
+      login_password = "dckr_pat__zaSs0nyPfdSD9fiK5wKxRLd6U0" #voir ou ca renvoie
     }
   }
 }
